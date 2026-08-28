@@ -22,12 +22,12 @@ Doctrine v11 LOCKED. Λ = Conjecture 1 (advisory; uniqueness OPEN; never a theor
 <!-- SZL-KERNEL-STATUS:import-LIVE:START -->
 ## Status
 
-> **STATUS: import-LIVE** on CPU Kernel Hub `get_kernel` (kernels `0.16.1`). GPU cubins stay **ROADMAP**.
+> **STATUS: import-LIVE** on CPU Kernel Hub `get_kernel` (kernels `0.16.1`). GPU cubins **UNAVAILABLE** this session (not ROADMAP).
 
 | Thing | Label | Method / N / date / what-NOT |
 |---|---|---|
 | Kernel Hub `get_kernel` | **import-LIVE** | MEASURED 2026-08-28 3:08pm ET on kernels `0.16.1`. Package HEAD [`7e533ce`](https://huggingface.co/kernels/SZLHOLDINGS/YARQA-ATTN/commit/7e533ce702029061bc68f9f9cafe88efdd7f5f00) (`7e533ce702029061bc68f9f9cafe88efdd7f5f00`). README at MEASURE [`2871b3c`](https://huggingface.co/kernels/SZLHOLDINGS/YARQA-ATTN/commit/2871b3cbd73ee05e9f1aa010b75b190683f0ecd3). Legal name `yarqa-attn` (Python module `yarqa_attn`). Variants: `build/torch-universal` (default `get_kernel`) and `build/torch-cpu` (`backend="cpu"`). Working calls: `get_kernel("SZLHOLDINGS/YARQA-ATTN", revision="main", trust_remote_code=True)` and the same with `backend="cpu"`. `selfcheck` **ok**. `max_abs_vs_compartment_ref=3.58e-07` (full `3.5762786865234375e-07`), `path=torch_compartment`. What-NOT: no tokens/s; no joules; not a fourth Flash / Flex / paged stack. Lambda = Conjecture 1 (advisory). |
-| GPU cubins | **ROADMAP** | Not claimed LIVE. |
+| GPU cubins | **UNAVAILABLE** | MEASURED 2026-08-28 7:01pm ET this session. Host `cursor` (Linux 6.12.94+ x86_64, Intel Xeon 8-core). `torch` `2.13.0+cu130` compiled CUDA 13.0. `torch.cuda.is_available()=false`. `nvidia-smi` UNAVAILABLE. `device_count=0`. Triton `3.7.1` present with no CUDA device. No cubin shipped. No tokens/s. No joules. CPU import-LIVE unchanged. Not a fourth Flash / Flex / paged stack. Lab stays Khipu. |
 
 <!-- SZL-KERNEL-STATUS:import-LIVE:END -->
 
