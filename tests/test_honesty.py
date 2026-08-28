@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import ast
+import re
 from pathlib import Path
 
 import pytest
@@ -53,8 +54,9 @@ def test_readme_kernel_voice_no_metrics():
     blob = readme + "\n" + card
     assert "owner" in readme and "kernel" in readme
     assert "not a" in readme and "weight" in readme
-    for forbidden in ("tokens/s", "tok/s", "joules", "j/token"):
-        assert forbidden not in blob
+    # Disclaimers are KERNEL voice. Fabricated numeric rates are not.
+    assert "not claimed" in readme
+    assert not re.search(r"\d[\d.,]*\s*(tokens/s|tok/s|joules|j/token)", blob)
     # Do not stamp import-LIVE as a status. Mentions that KERNEL has not
     # stamped it (and must not) are allowed.
     assert "status: import-live" not in blob
