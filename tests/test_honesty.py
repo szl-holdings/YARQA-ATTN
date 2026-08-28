@@ -48,6 +48,19 @@ def test_no_vendored_attention_imports():
                     assert not node.module.startswith(banned), path.name
 
 
+def test_output_digest_does_not_call_numpy():
+    path = _ROOT / "torch-ext" / "yarqa_attn" / "attn.py"
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Attribute) and node.attr == "numpy":
+            raise AssertionError("attn.py must not call Tensor.numpy (CPU CI has no numpy)")
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                assert alias.name != "numpy"
+        if isinstance(node, ast.ImportFrom) and node.module:
+            assert not node.module.startswith("numpy")
+
+
 def test_readme_kernel_voice_no_metrics():
     readme = (_ROOT / "README.md").read_text(encoding="utf-8").lower()
     card = (_ROOT / "CARD.md").read_text(encoding="utf-8").lower()

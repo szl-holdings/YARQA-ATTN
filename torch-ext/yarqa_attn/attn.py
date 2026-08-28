@@ -10,6 +10,7 @@ TRT cubins, CuTeDSL, or flex_attention.py.
 """
 from __future__ import annotations
 
+import ctypes
 from typing import List, Optional
 
 import torch
@@ -92,8 +93,16 @@ def _block_diag_reference(
 
 
 def _output_digest(y: torch.Tensor) -> str:
-    blob = y.detach().to(dtype=torch.float32, device="cpu").contiguous().numpy().tobytes()
-    return sha3_hex(blob)
+    """SHA3-256 of contiguous float32 IEEE bytes. Numpy is not required.
+
+    GitHub CPU torch wheels often ship without numpy; a numpy conversion is a defect here.
+    """
+    x = y.detach().to(dtype=torch.float32, device="cpu").contiguous()
+    nbytes = int(x.numel()) * int(x.element_size())
+    if nbytes == 0:
+        return sha3_hex(b"")
+    buf = (ctypes.c_char * nbytes).from_address(x.data_ptr())
+    return sha3_hex(bytes(buf))
 
 
 def yarqa_attn(
