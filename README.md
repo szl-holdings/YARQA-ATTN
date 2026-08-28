@@ -1,2 +1,82 @@
 # YARQA-ATTN
-KERNEL original SZL attention kernel (YARQA canal/compartment silhouette). Receipt-aware, honesty-labeled. Not a Flash/Sage/Flex clone, not a weight, not an alias of the Triton trio. Doctrine v11, Λ=Conjecture 1, Apache-2.0.
+
+Canonical GitHub source for Hub `SZLHOLDINGS/YARQA-ATTN`.
+
+**Owner: KERNEL.** This is a kernel, not a Fall 2026 ATELIER weight, not a pointer at the Triton trio (`szl-receipt-attn`, `szl-maskmod`, `szl-block-kv`), and not an alias of receipt-attn. a11oy-net must not list it as a fourth Flash / Flex / paged stack. Those three stay separate.
+
+Quechua *yarqa* = irrigation canal that divides flow. Original SZL cut: **compartment / plug-flow attention**. Partition a sequence into canals (contiguous compartments), attend **within** a compartment, emit SHA3-256 receipts of the partition and of the attention output.
+
+Distinct silhouettes:
+
+| This kernel | Not this kernel |
+|---|---|
+| Contiguous canals, attend inside each | Flash tiled fused attention → `szl-receipt-attn` |
+| Block-diagonal by construction | Flex `score_mod` + block-mask → `szl-maskmod` |
+| No paged KV gather | Paged KV → `szl-block-kv` |
+| Attention kernel | CFD plug-flow at `github.com/szl-holdings/yarqa` (metaphor only; different product) |
+
+We do not copy Dao hopper, Sage `csrc`, vLLM paged `.cu`, cuDNN FMHA, TRT cubins, CuTeDSL, or `flex_attention.py`.
+
+Doctrine v11 LOCKED. Λ = Conjecture 1 (advisory; uniqueness OPEN; never a theorem). GitHub bytes are the artifact. Hub is the publish mirror. KERNEL binds Hub after this source lands. No Hub PUT of empty cards.
+
+## Status
+
+| | |
+|---|---|
+| **Python** | present (`torch-ext/yarqa_attn`) |
+| **Path** | `torch_compartment` — CPU torch SDPA, with a labeled manual matmul+softmax fallback |
+| **GPU cubins** | not claimed |
+| **import-LIVE** | not stamped (KERNEL stamps after Kernel Hub `get_kernel` MEASURE) |
+| **tokens/s, joules** | not claimed |
+| **License** | Apache-2.0 |
+
+## Load
+
+After KERNEL binds Hub bytes:
+
+```python
+from kernels import get_kernel
+
+attn = get_kernel(
+    "SZLHOLDINGS/YARQA-ATTN",
+    revision="main",
+    trust_remote_code=True,
+)
+```
+
+Source tree (labeled; not a Hub load; not import-LIVE):
+
+```python
+import torch
+from yarqa_attn import yarqa_attn, ReceiptChain, selfcheck, canal_bounds
+
+q = k = v = torch.randn(1, 2, 16, 32)
+chain = ReceiptChain()
+y = yarqa_attn(q, k, v, 4, chain=chain)
+print(canal_bounds(16, 4), chain.verify(), selfcheck())
+```
+
+`selfcheck()` never fabricates a pass. It runs a small CPU check: slice-and-attend vs a naive block-diagonal full-attn-within-compartment reference, receipt tamper detect, and `n_canals > 1` actually splits.
+
+## API
+
+`yarqa_attn(q, k, v, n_canals, chain=None)` — `q,k,v` are `(batch, heads, seq, dim)` on **CPU**. Sequence length is split into `n_canals` contiguous canals (earlier canals receive the remainder). Each canal is independent attention. Outputs are concatenated along seq.
+
+`ReceiptChain` — SHA3-256. One receipt for partition boundaries, one for the attention-output digest. `verify()` returns `(ok, depth, first_break)`.
+
+`canal_bounds(seq_len, n_canals)` — exclusive end-points `[0, ..., seq_len]`.
+
+v0 refuses CUDA tensors. That is honesty, not a missing bench.
+
+## Correctness band (documented, not a bench)
+
+fp32 vs naive within-compartment SDPA (block-diagonal keep-mask): **atol=1e-5, rtol=1e-5**.
+
+## Tests
+
+- kernel-builder: `nix run .#testshell-torch-ext-local` (sets `LOCAL_KERNELS`; `get_kernel` must hard-fail if that env is ignored)
+- source tree (labeled, not a Hub load): `SZL_SOURCE_TREE_TESTS=1 PYTHONPATH=torch-ext python -m pytest tests/ -q`
+
+## License
+
+Apache-2.0. Copyright 2026 SZL Holdings. Owner: Stephen P. Lutar Jr. / SZL Holdings. Homepage: https://a-11-oy.com
