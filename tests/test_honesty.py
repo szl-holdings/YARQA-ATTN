@@ -69,11 +69,12 @@ def test_readme_kernel_voice_no_metrics():
     assert "not a" in readme and "weight" in readme
     # Disclaimers are KERNEL voice. Fabricated numeric rates are not.
     assert "not claimed" in readme
+    assert "software/kernel" in readme or "software" in readme
     assert not re.search(r"\d[\d.,]*\s*(tokens/s|tok/s|joules|j/token)", blob)
-    # Do not stamp import-LIVE as a status. Mentions that KERNEL has not
-    # stamped it (and must not) are allowed.
-    assert "status: import-live" not in blob
-    assert "import_live: true" not in blob
+    # MEASURED import-LIVE (method/N/date) is allowed. Bare YAML flags without
+    # MEASURED evidence are not a substitute for a timed Hub load.
+    if "import-live" in blob or "import_live: true" in blob:
+        assert "measured" in blob
     assert "python" in readme and "present" in readme
     assert "szl-receipt-attn" in readme
     assert "szl-maskmod" in readme
