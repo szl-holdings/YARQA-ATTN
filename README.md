@@ -17,6 +17,8 @@ Distinct silhouettes:
 
 We do not copy Dao hopper, Sage `csrc`, vLLM paged `.cu`, cuDNN FMHA, TRT cubins, CuTeDSL, or `flex_attention.py`.
 
+**SOFTWARE/KERNEL.** Not a trained model. No weights. Tokens/s and joules are not claimed.
+
 Doctrine v11 LOCKED. Λ = Conjecture 1 (advisory; uniqueness OPEN; never a theorem). GitHub bytes are the artifact. Hub is the publish mirror. KERNEL binds Hub after this source lands. No Hub PUT of empty cards.
 
 <!-- SZL-KERNEL-STATUS:import-LIVE:START -->
