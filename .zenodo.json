@@ -1,0 +1,13 @@
+{
+  "title": "YARQA-ATTN — original SZL attention kernel (canal/compartment silhouette)",
+  "upload_type": "software",
+  "description": "Receipt-aware, honesty-labeled attention kernel. Not a Flash/Sage/Flex clone, not a weight, not an alias of the Triton trio. Doctrine v11, Λ = Conjecture 1. Mirrors HF SZLHOLDINGS/YARQA-ATTN.",
+  "creators": [{"name": "Lutar, Stephen P., Jr."}],
+  "license": {"id": "Apache-2.0"},
+  "keywords": ["governed-ai", "attention", "kernel", "receipts", "szl-holdings"],
+  "related_identifiers": [
+    {"identifier": "10.5281/zenodo.19944926", "relation": "isSupplementTo", "scheme": "doi"},
+    {"identifier": "https://huggingface.co/SZLHOLDINGS/YARQA-ATTN", "relation": "isDocumentedBy", "scheme": "url"}
+  ],
+  "notes": "NEW work per the szl-papers deposit policy. Mint via GitHub release after enabling this repo in the owner's Zenodo account."
+}
