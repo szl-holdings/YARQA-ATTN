@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "YARQA-ATTN — original SZL attention kernel (canal/compartment silhouette)"
+authors:
+  - family-names: Lutar
+    given-names: Stephen Paul
+license: Apache-2.0
+url: "https://huggingface.co/SZLHOLDINGS/YARQA-ATTN"
+repository-code: "https://github.com/szl-holdings/YARQA-ATTN"
