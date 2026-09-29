@@ -1,0 +1,329 @@
+{
+  "schema": "szl.hf-hub-import.v1",
+  "generator": "scripts/hf_hub_import.py",
+  "method": "anonymous public Hub API (no token, read-only)",
+  "generated_at": "2026-09-29T15:21:02Z",
+  "compared_against": {
+    "git_head": "176c5bc8af34a9eeac2dd28b2a4d6e70c7456828",
+    "tree": "working tree at generation time"
+  },
+  "path_map": {
+    "README.md": "CARD.md",
+    "build/<variant>/<module>/<file>": "torch-ext/<module>/<file>"
+  },
+  "targets": [
+    {
+      "repo_type": "kernel",
+      "repo_id": "SZLHOLDINGS/YARQA-ATTN",
+      "revision": "4e0828e517e84377d0024ab3f9d0cdab7d31520d",
+      "last_modified": "2026-08-29T16:00:52.000Z",
+      "card": {
+        "path": "hf/hub-import/kernel.README.md",
+        "blob_oid": "17bf71e5e07ab43808ec943049a0f7b67e040652",
+        "sha256": "eaa4eaf73fe9e57f568781e18317fcf2cce3799c2caa46ffc91414e8c00e3d3d",
+        "bytes": 6096,
+        "has_front_matter": true,
+        "line_endings": "crlf",
+        "source_url": "https://huggingface.co/kernels/SZLHOLDINGS/YARQA-ATTN/resolve/4e0828e517e84377d0024ab3f9d0cdab7d31520d/README.md"
+      },
+      "files": [
+        {
+          "path": ".gitattributes",
+          "oid": "6b7a283f6a9d189d65bccdb859c6f80016f52228",
+          "size": 127,
+          "github_path": ".gitattributes",
+          "status": "differs"
+        },
+        {
+          "path": "BENCH.laptop-blackwell.json",
+          "oid": "1317ea66396c485215f418a7df1669c6b887088a",
+          "size": 5817,
+          "github_path": "BENCH.laptop-blackwell.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "OPERATIONAL.json",
+          "oid": "8909228c6d600768e9e88a34d3d49227bafdee65",
+          "size": 1919,
+          "github_path": "OPERATIONAL.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "README.md",
+          "oid": "17bf71e5e07ab43808ec943049a0f7b67e040652",
+          "size": 6096,
+          "github_path": "CARD.md",
+          "status": "differs"
+        },
+        {
+          "path": "build/torch-cpu/metadata.json",
+          "oid": "a48d6dccc6b79720f1d91a752e6ec426d2ee5957",
+          "size": 270,
+          "github_path": "build/torch-cpu/metadata.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "build/torch-cpu/yarqa_attn/__init__.py",
+          "oid": "43fd90ffb8cbc05ef01b6e58d2a734a9d227e9ec",
+          "size": 404,
+          "github_path": "torch-ext/yarqa_attn/__init__.py",
+          "status": "same"
+        },
+        {
+          "path": "build/torch-cpu/yarqa_attn/_chain.py",
+          "oid": "869d78d6f30070cb0b78c9850a799353a3e5dbec",
+          "size": 1515,
+          "github_path": "torch-ext/yarqa_attn/_chain.py",
+          "status": "same"
+        },
+        {
+          "path": "build/torch-cpu/yarqa_attn/attn.py",
+          "oid": "b6aeb2c73c7ff570acf7a626895b7856005c36be",
+          "size": 6891,
+          "github_path": "torch-ext/yarqa_attn/attn.py",
+          "status": "same"
+        },
+        {
+          "path": "build/torch-universal/metadata.json",
+          "oid": "1392e94e58e77fe66b4c8fe4b87fd9d45208f80b",
+          "size": 276,
+          "github_path": "build/torch-universal/metadata.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "build/torch-universal/yarqa_attn/__init__.py",
+          "oid": "43fd90ffb8cbc05ef01b6e58d2a734a9d227e9ec",
+          "size": 404,
+          "github_path": "torch-ext/yarqa_attn/__init__.py",
+          "status": "same"
+        },
+        {
+          "path": "build/torch-universal/yarqa_attn/_chain.py",
+          "oid": "869d78d6f30070cb0b78c9850a799353a3e5dbec",
+          "size": 1515,
+          "github_path": "torch-ext/yarqa_attn/_chain.py",
+          "status": "same"
+        },
+        {
+          "path": "build/torch-universal/yarqa_attn/attn.py",
+          "oid": "b6aeb2c73c7ff570acf7a626895b7856005c36be",
+          "size": 6891,
+          "github_path": "torch-ext/yarqa_attn/attn.py",
+          "status": "same"
+        }
+      ],
+      "summary": {
+        "files": 12,
+        "same": 6,
+        "differs": 2,
+        "hub_only": 4
+      },
+      "github_only": []
+    },
+    {
+      "repo_type": "model",
+      "repo_id": "SZLHOLDINGS/YARQA-ATTN",
+      "revision": "d6aeb4f24655c07acc155eed7acade5ad249724f",
+      "last_modified": "2026-09-24T21:57:34.000Z",
+      "card": {
+        "path": "hf/hub-import/model.README.md",
+        "blob_oid": "a0025e6c28dc8eb29bd7971b35eb254faadd942a",
+        "sha256": "cd192d0a071eaa5d0a2044ca1028993b5b10a2bb50eaaadf03220022dc05b9ec",
+        "bytes": 7823,
+        "has_front_matter": true,
+        "line_endings": "lf",
+        "source_url": "https://huggingface.co/SZLHOLDINGS/YARQA-ATTN/resolve/d6aeb4f24655c07acc155eed7acade5ad249724f/README.md"
+      },
+      "files": [
+        {
+          "path": ".gitattributes",
+          "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+          "size": 1519,
+          "github_path": ".gitattributes",
+          "status": "differs"
+        },
+        {
+          "path": "BENCH.laptop-blackwell.json",
+          "oid": "1317ea66396c485215f418a7df1669c6b887088a",
+          "size": 5817,
+          "github_path": "BENCH.laptop-blackwell.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "CARD.md",
+          "oid": "ba21f91a20cc82ff5b61583264ed1ed2d1fd59bc",
+          "size": 3960,
+          "github_path": "CARD.md",
+          "status": "differs"
+        },
+        {
+          "path": "LICENSE",
+          "oid": "be03f79d4ef224757dcad3564b780cb58efde543",
+          "size": 553,
+          "github_path": "LICENSE",
+          "status": "differs"
+        },
+        {
+          "path": "OPERATIONAL.json",
+          "oid": "8909228c6d600768e9e88a34d3d49227bafdee65",
+          "size": 1919,
+          "github_path": "OPERATIONAL.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "README.md",
+          "oid": "a0025e6c28dc8eb29bd7971b35eb254faadd942a",
+          "size": 7823,
+          "github_path": "CARD.md",
+          "status": "differs"
+        },
+        {
+          "path": "TRAINING_RECEIPT.json",
+          "oid": "3119430ebf2053f198134c94c585308d345665e6",
+          "size": 1186,
+          "github_path": "TRAINING_RECEIPT.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "bom/model-bom.cdx.json",
+          "oid": "b5245c17db3ec1376d9807486d71ab38cd112990",
+          "size": 8238,
+          "github_path": "bom/model-bom.cdx.json",
+          "status": "hub_only"
+        },
+        {
+          "path": "build.toml",
+          "oid": "2a484d7631673f79448e3d629e8c7b6a0f240b00",
+          "size": 390,
+          "github_path": "build.toml",
+          "status": "same"
+        },
+        {
+          "path": "example.py",
+          "oid": "63f53edd8950909846c8cac5f51a60b26a06cd07",
+          "size": 795,
+          "github_path": "example.py",
+          "status": "same"
+        },
+        {
+          "path": "flake.nix",
+          "oid": "6ca01693f9ea358f398ca3dc084ef851064733dd",
+          "size": 473,
+          "github_path": "flake.nix",
+          "status": "same"
+        },
+        {
+          "path": "og-card.png",
+          "oid": "a35a199c924eaf5af3f1a1d48a23940d204ee2a2",
+          "size": 32640,
+          "github_path": "og-card.png",
+          "status": "hub_only"
+        },
+        {
+          "path": "pyproject.toml",
+          "oid": "d3c568d8d77a1f0481e17bfe6785bd4a189754ec",
+          "size": 461,
+          "github_path": "pyproject.toml",
+          "status": "same"
+        },
+        {
+          "path": "tests/__init__.py",
+          "oid": "45dd15cb73296c02432755139cb1e20e79c370a9",
+          "size": 82,
+          "github_path": "tests/__init__.py",
+          "status": "same"
+        },
+        {
+          "path": "tests/conftest.py",
+          "oid": "6c915b338bc854f64d3d0e276d1e33ef64961f3a",
+          "size": 1774,
+          "github_path": "tests/conftest.py",
+          "status": "same"
+        },
+        {
+          "path": "tests/test_api_edges.py",
+          "oid": "e0670fb01ad6a25df74cfd596366d73ad48c232a",
+          "size": 1486,
+          "github_path": "tests/test_api_edges.py",
+          "status": "same"
+        },
+        {
+          "path": "tests/test_honesty.py",
+          "oid": "5ec9e7c647ddd98e180738139f56db363ae96a62",
+          "size": 2968,
+          "github_path": "tests/test_honesty.py",
+          "status": "differs"
+        },
+        {
+          "path": "tests/test_layout.py",
+          "oid": "59aaecf5e829f6fa281520bfd9278fc1118d5afd",
+          "size": 1958,
+          "github_path": "tests/test_layout.py",
+          "status": "same"
+        },
+        {
+          "path": "tests/test_local_kernels.py",
+          "oid": "fc0171b8d20c6544159ad849fd5bebb0d4b8524c",
+          "size": 622,
+          "github_path": "tests/test_local_kernels.py",
+          "status": "same"
+        },
+        {
+          "path": "tests/test_receipt.py",
+          "oid": "9661f7bdddbda7751691ce61ab724a4f70a2ba2a",
+          "size": 2247,
+          "github_path": "tests/test_receipt.py",
+          "status": "same"
+        },
+        {
+          "path": "tests/test_yarqa_attn.py",
+          "oid": "e5189066cb152c7c47b0762af75c5ca5f449948b",
+          "size": 3488,
+          "github_path": "tests/test_yarqa_attn.py",
+          "status": "same"
+        },
+        {
+          "path": "torch-ext/yarqa_attn/__init__.py",
+          "oid": "43fd90ffb8cbc05ef01b6e58d2a734a9d227e9ec",
+          "size": 404,
+          "github_path": "torch-ext/yarqa_attn/__init__.py",
+          "status": "same"
+        },
+        {
+          "path": "torch-ext/yarqa_attn/_chain.py",
+          "oid": "869d78d6f30070cb0b78c9850a799353a3e5dbec",
+          "size": 1515,
+          "github_path": "torch-ext/yarqa_attn/_chain.py",
+          "status": "same"
+        },
+        {
+          "path": "torch-ext/yarqa_attn/attn.py",
+          "oid": "b6aeb2c73c7ff570acf7a626895b7856005c36be",
+          "size": 6891,
+          "github_path": "torch-ext/yarqa_attn/attn.py",
+          "status": "same"
+        },
+        {
+          "path": "yarqa.py",
+          "oid": "e97e330ce1fff9534456adbbc8c321be9005ca4a",
+          "size": 3186,
+          "github_path": "yarqa.py",
+          "status": "hub_only"
+        },
+        {
+          "path": "yarqa_attn.npz",
+          "oid": "513e00075edfa32d398e92559d67e0a7f55d0f9b",
+          "size": 3301,
+          "github_path": "yarqa_attn.npz",
+          "status": "hub_only"
+        }
+      ],
+      "summary": {
+        "files": 26,
+        "same": 14,
+        "differs": 5,
+        "hub_only": 7
+      }
+    }
+  ]
+}
