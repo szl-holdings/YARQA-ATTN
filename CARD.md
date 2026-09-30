@@ -34,9 +34,17 @@ KERNEL kernel card. Original SZL **compartment / plug-flow** attention cut: part
 | Backends | cpu (torch_compartment) |
 
 ```python
+import re
+
+# Set only after owner qualification of this first-class Kernel Hub release.
+KERNEL_REVISION = "REPLACE_WITH_OWNER_QUALIFIED_KERNEL_COMMIT"
+if re.fullmatch(r"[0-9a-f]{40}", KERNEL_REVISION) is None:
+    raise ValueError("An owner-qualified immutable Kernel Hub commit is required")
+
+# This loads and executes remote Python code; review the pinned source first.
 from kernels import get_kernel
 
-attn = get_kernel("SZLHOLDINGS/YARQA-ATTN", revision="main", trust_remote_code=True)
+attn = get_kernel("SZLHOLDINGS/YARQA-ATTN", revision=KERNEL_REVISION, trust_remote_code=True)
 ```
 
 ## What it is not
@@ -88,6 +96,21 @@ print(canal_bounds(16, 4), chain.verify(), selfcheck())
 `selfcheck()` never fabricates a pass. It runs a small CPU check: slice-and-attend vs a
 naive block-diagonal reference, receipt tamper detection, and that `n_canals > 1`
 actually splits.
+
+## Source and Hub release scope
+
+Loading with `trust_remote_code=True` executes code from the selected first-class
+Kernel Hub repository. Review that immutable source and qualify a compatible
+`kernels` client before running it. Set `KERNEL_REVISION` to the owner-qualified
+Kernel Hub publication commit; this card does not establish one. A GitHub
+source commit or model-twin revision is not the provider revision. The syntax
+check in the example does not establish release qualification.
+
+This is staged GitHub card source, not evidence that the described build is
+currently published or qualified on either Hub twin. The recorded import compares the enumerated torch-ext/yarqa_attn/ sources only. That comparison is not qualification of a current provider release, a model-twin NPZ artifact, or a runtime environment.
+
+Publication/import context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/275938c3e9a6ad3c85d222234fdced735955c676/hf/README.md).
+Historical Hub-only benchmark receipts remain REPORTED at their stated scope.
 
 ## Claims
 
