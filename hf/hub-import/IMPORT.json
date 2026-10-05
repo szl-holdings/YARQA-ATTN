@@ -2,9 +2,9 @@
   "schema": "szl.hf-hub-import.v1",
   "generator": "scripts/hf_hub_import.py",
   "method": "anonymous public Hub API (no token, read-only)",
-  "generated_at": "2026-09-29T15:21:02Z",
+  "generated_at": "2026-10-05T04:54:59Z",
   "compared_against": {
-    "git_head": "176c5bc8af34a9eeac2dd28b2a4d6e70c7456828",
+    "git_head": "cc895b47e7a3d1e7d5f246812a573dfd1205b103",
     "tree": "working tree at generation time"
   },
   "path_map": {
@@ -224,7 +224,7 @@
           "oid": "d3c568d8d77a1f0481e17bfe6785bd4a189754ec",
           "size": 461,
           "github_path": "pyproject.toml",
-          "status": "same"
+          "status": "differs"
         },
         {
           "path": "tests/__init__.py",
@@ -320,8 +320,8 @@
       ],
       "summary": {
         "files": 26,
-        "same": 14,
-        "differs": 5,
+        "same": 13,
+        "differs": 6,
         "hub_only": 7
       }
     }

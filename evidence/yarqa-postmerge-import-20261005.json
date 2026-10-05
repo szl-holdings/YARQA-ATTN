@@ -1,0 +1,125 @@
+{
+  "card_projection": {
+    "classification": "SOURCE_AHEAD",
+    "github_card_sha256": "25ebeb4404929e33b44d87ad3b9f0ff05ac48210bf324f3ad7ad4104fcb495c0",
+    "kernel_card_sha256": "eaa4eaf73fe9e57f568781e18317fcf2cce3799c2caa46ffc91414e8c00e3d3d",
+    "kernel_matches_github_card": false,
+    "model_card_sha256": "cd192d0a071eaa5d0a2044ca1028993b5b10a2bb50eaaadf03220022dc05b9ec",
+    "model_matches_github_card": false
+  },
+  "claims": {
+    "current_main_package_parity": "MEASURED_6_OF_6",
+    "github_to_hub_source_binding": "UNAVAILABLE",
+    "gpu_cubins": "UNAVAILABLE_NOT_SHIPPED",
+    "hub_cards": "SOURCE_AHEAD",
+    "immutable_kernel_import": "MEASURED",
+    "performance": "NOT_CLAIMED",
+    "production_readiness": "NOT_CLAIMED"
+  },
+  "cost_budget_usd": 0,
+  "limitations": [
+    "Neither Hub twin exposes SZL_SOURCE_BINDING.json at the observed revision.",
+    "Package parity covers three Python files across the CPU and universal build variants.",
+    "The source-owned card is ahead of both provider cards; this receipt performs no Hub write.",
+    "A local immutable CPU import does not qualify throughput, energy, GPU behavior, provider SLA, product runtime, or production readiness."
+  ],
+  "measurement_method": "canonical Git object bytes from git show <revision>:<path> compared with immutable provider resolve bytes",
+  "observed_at": "2026-10-05T04:59:31.381381+00:00",
+  "package_parity": {
+    "__init__.py": {
+      "all_variants_equal": true,
+      "github_path": "torch-ext/yarqa_attn/__init__.py",
+      "github_sha256": "56a4f1d3aadc08ecc58378bfa9ede1691cfab7e59a90a27ac9135747db4f64d8",
+      "variants": {
+        "torch-cpu": {
+          "equal_to_github_source": true,
+          "remote_path": "build/torch-cpu/yarqa_attn/__init__.py",
+          "remote_sha256": "56a4f1d3aadc08ecc58378bfa9ede1691cfab7e59a90a27ac9135747db4f64d8"
+        },
+        "torch-universal": {
+          "equal_to_github_source": true,
+          "remote_path": "build/torch-universal/yarqa_attn/__init__.py",
+          "remote_sha256": "56a4f1d3aadc08ecc58378bfa9ede1691cfab7e59a90a27ac9135747db4f64d8"
+        }
+      }
+    },
+    "_chain.py": {
+      "all_variants_equal": true,
+      "github_path": "torch-ext/yarqa_attn/_chain.py",
+      "github_sha256": "6e4f6dcd94fb554fefca00d7897792161c1a7b506c524c41df12cb5376287b7e",
+      "variants": {
+        "torch-cpu": {
+          "equal_to_github_source": true,
+          "remote_path": "build/torch-cpu/yarqa_attn/_chain.py",
+          "remote_sha256": "6e4f6dcd94fb554fefca00d7897792161c1a7b506c524c41df12cb5376287b7e"
+        },
+        "torch-universal": {
+          "equal_to_github_source": true,
+          "remote_path": "build/torch-universal/yarqa_attn/_chain.py",
+          "remote_sha256": "6e4f6dcd94fb554fefca00d7897792161c1a7b506c524c41df12cb5376287b7e"
+        }
+      }
+    },
+    "attn.py": {
+      "all_variants_equal": true,
+      "github_path": "torch-ext/yarqa_attn/attn.py",
+      "github_sha256": "5bd079a88ca35eebaee0568aaf7e90c8dd40bfaac453761805624336fc0a7d53",
+      "variants": {
+        "torch-cpu": {
+          "equal_to_github_source": true,
+          "remote_path": "build/torch-cpu/yarqa_attn/attn.py",
+          "remote_sha256": "5bd079a88ca35eebaee0568aaf7e90c8dd40bfaac453761805624336fc0a7d53"
+        },
+        "torch-universal": {
+          "equal_to_github_source": true,
+          "remote_path": "build/torch-universal/yarqa_attn/attn.py",
+          "remote_sha256": "5bd079a88ca35eebaee0568aaf7e90c8dd40bfaac453761805624336fc0a7d53"
+        }
+      }
+    }
+  },
+  "provider": {
+    "kernel_repo": "kernels/SZLHOLDINGS/YARQA-ATTN",
+    "kernel_revision": "4e0828e517e84377d0024ab3f9d0cdab7d31520d",
+    "kernel_source_binding_file": "UNAVAILABLE",
+    "model_repo": "SZLHOLDINGS/YARQA-ATTN",
+    "model_revision": "d6aeb4f24655c07acc155eed7acade5ad249724f",
+    "model_source_binding_file": "UNAVAILABLE"
+  },
+  "runtime": {
+    "device": "cpu",
+    "huggingface_hub": "2.0.0",
+    "kernels": "0.16.1",
+    "kernels_data": "0.16.2",
+    "paid_compute": false,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "torch": "2.10.0+cu130"
+  },
+  "schema": "szl.yarqa-postmerge-import-receipt/v1",
+  "secret_values_recorded": false,
+  "selfcheck": {
+    "chain_break": -1,
+    "chain_depth": 2,
+    "chain_ok": true,
+    "lambda": "Conjecture 1",
+    "max_abs_vs_compartment_ref": 4.76837158203125e-07,
+    "n_canals": 4,
+    "note": "CPU correctness vs naive within-compartment attn; no speedup claimed; GPU cubins not claimed; not import-LIVE",
+    "ok": true,
+    "path": "torch_compartment",
+    "python": "present",
+    "split": true,
+    "tamper_detected": true
+  },
+  "source": {
+    "repository": "szl-holdings/YARQA-ATTN",
+    "revision": "cc895b47e7a3d1e7d5f246812a573dfd1205b103",
+    "working_tree_scope": "current protected-main package bytes plus read-only Hub import refresh"
+  },
+  "state": "MEASURED_CURRENT_MAIN_IMPORT_PASS_PACKAGE_ALIGNED_SOURCE_BINDING_UNAVAILABLE_HUB_CARDS_SOURCE_AHEAD",
+  "supersedes": {
+    "path": "evidence/yarqa-import-20261005.json",
+    "reason": "The historical receipt preserved the correct parity conclusion but recorded checkout line-ending hashes as provider hashes. This successor preserves that receipt and corrects immutable byte identities using canonical Git object bytes."
+  }
+}
