@@ -26,17 +26,20 @@ Doctrine v11 LOCKED. Λ = Conjecture 1 (advisory; uniqueness OPEN; never a theor
 
 > **MEASURED immutable CPU import — 2026-10-05 UTC.** Kernel Hub revision
 > [`4e0828e`](https://huggingface.co/kernels/SZLHOLDINGS/YARQA-ATTN/commit/4e0828e517e84377d0024ab3f9d0cdab7d31520d)
-> loaded with `kernels==0.16.1`; `selfcheck()` passed. All three published Python
-> package files were byte-identical to GitHub source `819b904f304a`.
-> The Hub has no `SZL_SOURCE_BINDING.json`, so GitHub-to-Hub source binding remains
-> **UNAVAILABLE**. This dated receipt is not a floating `main` qualification, a
-> performance claim, GPU evidence, or production-readiness claim.
+> loaded with `kernels==0.16.1`; `selfcheck()` passed. The three canonical Git
+> object blobs at protected source `cc895b47e7a3d1e7d5f246812a573dfd1205b103` matched all six
+> provider copies across the CPU and universal build variants. Neither Hub twin
+> exposes `SZL_SOURCE_BINDING.json`, and both provider cards remain behind the
+> source-owned card, so GitHub-to-Hub source binding remains **UNAVAILABLE** and card projection is
+> **SOURCE_AHEAD**. This is not a floating `main` qualification, a performance
+> claim, GPU evidence, provider-SLA claim, or production-readiness claim.
 
 | Observation | Label | Exact evidence |
 |---|---|---|
-| Immutable Kernel Hub import and `selfcheck()` | **MEASURED** | [`evidence/yarqa-import-20261005.json`](evidence/yarqa-import-20261005.json) |
-| Current package-byte parity (`__init__.py`, `_chain.py`, `attn.py`) | **MEASURED 3/3** | Same receipt; SHA-256 equality per file |
-| GitHub-to-Hub source-binding file | **UNAVAILABLE** | No `SZL_SOURCE_BINDING.json` on the observed Kernel Hub head |
+| Immutable Kernel Hub import and `selfcheck()` | **MEASURED** | [`evidence/yarqa-postmerge-import-20261005.json`](evidence/yarqa-postmerge-import-20261005.json) |
+| Canonical Git-object parity across CPU and universal builds | **MEASURED 6/6** | Same receipt; SHA-256 equality against immutable provider bytes |
+| GitHub-to-Hub source-binding files | **UNAVAILABLE** | No `SZL_SOURCE_BINDING.json` on either observed Hub twin |
+| Provider card projection | **SOURCE_AHEAD** | Source-owned `CARD.md` differs from both immutable provider cards |
 | GPU cubins | **UNAVAILABLE / NOT SHIPPED** | v0 refuses CUDA; no GPU or throughput claim |
 
 <!-- SZL-KERNEL-STATUS:import-LIVE:END -->

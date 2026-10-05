@@ -90,7 +90,10 @@ def test_postmerge_receipt_uses_canonical_git_object_bytes() -> None:
 def test_readme_pins_the_measured_provider_revision() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert KERNEL_REVISION in readme
-    assert "evidence/yarqa-import-20261005.json" in readme
+    assert "evidence/yarqa-postmerge-import-20261005.json" in readme
+    assert POSTMERGE_SOURCE_REVISION in readme
+    assert "MEASURED 6/6" in readme
+    assert "SOURCE_AHEAD" in readme
     assert 'revision="main"' not in readme
     assert "source binding remains" in readme
     assert "production-readiness claim" in readme
