@@ -33,7 +33,7 @@ front_matter:
     not_an_alias: true
     collection: none
     python: present
-    import_live: true
+    import_live: false
 kernel:
   backends:
     - cpu (torch_compartment)
