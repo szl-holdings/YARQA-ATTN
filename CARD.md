@@ -16,7 +16,7 @@ szl:
   not_an_alias: true
   collection: none
   python: present
-  import_live: true
+  import_live: false
 ---
 <!-- hf-card: type=kernel source=szl-holdings/YARQA-ATTN vars=hf/card.yaml -->
 <!-- Rendered by szl-holdings/.github hf-card/render.py. Edit hf/card.yaml in szl-holdings/YARQA-ATTN; do not edit this card on the Hub. -->
@@ -106,19 +106,24 @@ Kernel Hub publication commit; this card does not establish one. A GitHub
 source commit or model-twin revision is not the provider revision. The syntax
 check in the example does not establish release qualification.
 
-This is staged GitHub card source, not evidence that the described build is
-currently published or qualified on either Hub twin. The recorded import compares the enumerated torch-ext/yarqa_attn/ sources only. That comparison is not qualification of a current provider release, a model-twin NPZ artifact, or a runtime environment.
+A current bounded receipt measured an immutable CPU import from Kernel Hub commit
+`4e0828e517e84377d0024ab3f9d0cdab7d31520d` with `kernels==0.16.1`, a passing
+`selfcheck()`, and byte equality for all three published Python package files against
+GitHub source `819b904f304a054cf78446aa43a5cb85e5149c4b`. The Kernel Hub repository
+has no `SZL_SOURCE_BINDING.json`, so GitHub-to-Hub source binding remains UNAVAILABLE.
+The measurement does not qualify performance, GPU execution, the model-twin NPZ
+artifact, production readiness, or a floating `main` reference.
 
-Publication/import context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/275938c3e9a6ad3c85d222234fdced735955c676/hf/README.md).
+Publication/import context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/hf/README.md).
 Historical Hub-only benchmark receipts remain REPORTED at their stated scope.
 
 ## Claims
 
 | Label | Claim | Evidence |
 | --- | --- | --- |
-| MEASURED | Compartment correctness. `tests/test_yarqa_attn.py` asserts that fp32 output matches a naive within-compartment (block-diagonal) reference, and with one canal matches full SDPA, within atol=1e-5, rtol=1e-5; that more than one canal actually splits; that one canal's output does not depend on another canal's values; that earlier canals take the remainder; and that `selfcheck()` reports ok. CI runs it on every pull request and every push to main (`cpu-tests.yml`). | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/176c5bc8af34a9eeac2dd28b2a4d6e70c7456828/tests/test_yarqa_attn.py) |
-| MEASURED | Receipts. `tests/test_receipt.py` asserts one receipt for the partition and one for the output, that tampering breaks the chain at the first row, and that the digests change with the values and with the canal count. | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/176c5bc8af34a9eeac2dd28b2a4d6e70c7456828/tests/test_receipt.py) |
-| REPORTED | CPU `get_kernel` load from the Kernel Hub (kernels 0.16.1, `build/torch-universal` and `build/torch-cpu`, `selfcheck` ok, `path=torch_compartment`) and a local pytest run, recorded 2026-08-29 in the Hub-only `BENCH.laptop-blackwell.json` and `OPERATIONAL.json` against source commit 160640bd. No receipt for them is committed in this repository. | none linked |
+| MEASURED | Compartment correctness. `tests/test_yarqa_attn.py` asserts that fp32 output matches a naive within-compartment (block-diagonal) reference, and with one canal matches full SDPA, within atol=1e-5, rtol=1e-5; that more than one canal actually splits; that one canal's output does not depend on another canal's values; that earlier canals take the remainder; and that `selfcheck()` reports ok. CI runs it on every pull request and every push to main (`cpu-tests.yml`). | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_yarqa_attn.py) |
+| MEASURED | Receipts. `tests/test_receipt.py` asserts one receipt for the partition and one for the output, that tampering breaks the chain at the first row, and that the digests change with the values and with the canal count. | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_receipt.py) |
+| MEASURED | Immutable CPU `get_kernel` load from Kernel Hub revision `4e0828e517e84377d0024ab3f9d0cdab7d31520d` using `kernels==0.16.1` on 2026-10-05 UTC. `selfcheck()` passed and the three published Python package files matched GitHub source `819b904f304a054cf78446aa43a5cb85e5149c4b` byte-for-byte. GitHub-to-Hub source binding remains UNAVAILABLE because the observed Hub revision has no `SZL_SOURCE_BINDING.json`. No performance, GPU or production claim is made. | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/evidence/yarqa-import-20261005.json) |
 | UNAVAILABLE | GPU cubins. None shipped; the 2026-08-28 session had no CUDA device. v0 refuses CUDA tensors, and the refusal test is skipped where no GPU exists. | none linked |
 | NOT_CLAIMED | Throughput, tokens/s, joules, or performance versus FlashAttention. A speed claim needs a timed run on named hardware; none exists. | none linked |
 
