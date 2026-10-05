@@ -23,11 +23,12 @@
     "The source-owned card is ahead of both provider cards; this receipt performs no Hub write.",
     "A local immutable CPU import does not qualify throughput, energy, GPU behavior, provider SLA, product runtime, or production readiness."
   ],
-  "measurement_method": "canonical Git object bytes from git show <revision>:<path> compared with immutable provider resolve bytes",
+  "measurement_method": "canonical Git blob objects identified by immutable blob OID and read with git cat-file blob, compared with immutable provider resolve bytes",
   "observed_at": "2026-10-05T04:59:31.381381+00:00",
   "package_parity": {
     "__init__.py": {
       "all_variants_equal": true,
+      "github_blob_oid": "43fd90ffb8cbc05ef01b6e58d2a734a9d227e9ec",
       "github_path": "torch-ext/yarqa_attn/__init__.py",
       "github_sha256": "56a4f1d3aadc08ecc58378bfa9ede1691cfab7e59a90a27ac9135747db4f64d8",
       "variants": {
@@ -45,6 +46,7 @@
     },
     "_chain.py": {
       "all_variants_equal": true,
+      "github_blob_oid": "869d78d6f30070cb0b78c9850a799353a3e5dbec",
       "github_path": "torch-ext/yarqa_attn/_chain.py",
       "github_sha256": "6e4f6dcd94fb554fefca00d7897792161c1a7b506c524c41df12cb5376287b7e",
       "variants": {
@@ -62,6 +64,7 @@
     },
     "attn.py": {
       "all_variants_equal": true,
+      "github_blob_oid": "b6aeb2c73c7ff570acf7a626895b7856005c36be",
       "github_path": "torch-ext/yarqa_attn/attn.py",
       "github_sha256": "5bd079a88ca35eebaee0568aaf7e90c8dd40bfaac453761805624336fc0a7d53",
       "variants": {

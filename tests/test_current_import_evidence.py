@@ -52,18 +52,19 @@ def test_postmerge_receipt_uses_canonical_git_object_bytes() -> None:
     assert receipt["card_projection"]["classification"] == "SOURCE_AHEAD"
     assert receipt["card_projection"]["kernel_matches_github_card"] is False
     assert receipt["card_projection"]["model_matches_github_card"] is False
-    assert "canonical Git object bytes" in receipt["measurement_method"]
+    assert "canonical Git blob objects" in receipt["measurement_method"]
     assert receipt["supersedes"]["path"] == "evidence/yarqa-import-20261005.json"
 
     for row in receipt["package_parity"].values():
+        current_blob_oid = subprocess.run(
+            ["git", "-C", str(ROOT), "rev-parse", f"HEAD:{row['github_path']}"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        assert current_blob_oid == row["github_blob_oid"]
         canonical = subprocess.run(
-            [
-                "git",
-                "-C",
-                str(ROOT),
-                "show",
-                f"{POSTMERGE_SOURCE_REVISION}:{row['github_path']}",
-            ],
+            ["git", "-C", str(ROOT), "cat-file", "blob", row["github_blob_oid"]],
             check=True,
             capture_output=True,
         ).stdout
