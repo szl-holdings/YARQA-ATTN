@@ -28,6 +28,22 @@ To refresh the import (read-only, anonymous public Hub API, no token):
 python scripts/hf_hub_import.py fetch
 ```
 
+## Current post-merge witness
+
+The read-only witness in [`../evidence/yarqa-postmerge-import-20261005.json`](../evidence/yarqa-postmerge-import-20261005.json) binds protected
+GitHub source `cc895b47e7a3d1e7d5f246812a573dfd1205b103` to immutable Kernel Hub revision
+`4e0828e517e84377d0024ab3f9d0cdab7d31520d` and model-twin revision `d6aeb4f24655c07acc155eed7acade5ad249724f`.
+It measures 6/6 canonical Git-object matches across the CPU and universal package
+variants and an exact-revision CPU `selfcheck()` pass. Neither twin exposes
+`SZL_SOURCE_BINDING.json`, and both provider cards differ from the source-owned card,
+so the current disposition is **PACKAGE_ALIGNED / SOURCE_BINDING_UNAVAILABLE /
+CARD_SOURCE_AHEAD**. No Hub mutation was performed.
+
+The earlier `evidence/yarqa-import-20261005.json` remains preserved as historical
+evidence. Its parity conclusion is retained, but its hash rows reflected Windows
+checkout line endings. The successor receipt records canonical Git object bytes and
+immutable provider bytes, preventing checkout-EOL contamination.
+
 ## Publish status: blocked on owner actions
 
 **Nothing in this repository writes the Hub.** Both twins still serve the cards in `hub-import/`. Publishing `CARD.md` needs all of:
