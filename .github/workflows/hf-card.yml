@@ -22,6 +22,8 @@ concurrency:
 
 jobs:
   card:
+    env:
+      SOURCE_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
     name: card source in sync and lint-clean
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -29,9 +31,19 @@ jobs:
       - name: Check out
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ env.SOURCE_REVISION }}
           persist-credentials: false
+          fetch-depth: 1
 
       # hf-card as merged in szl-holdings/.github#801. Bump deliberately.
+
+      - name: Prove exact source checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_REVISION"
+          test "$(git rev-parse --verify HEAD^{commit})" = "$SOURCE_REVISION"
+
       - name: Check out hf-card at the pinned commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

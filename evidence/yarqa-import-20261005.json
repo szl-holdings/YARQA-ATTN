@@ -1,0 +1,69 @@
+{
+  "claims": {
+    "current_package_byte_parity": "MEASURED",
+    "github_to_hub_source_binding": "UNAVAILABLE",
+    "gpu_cubins": "UNAVAILABLE_NOT_SHIPPED",
+    "immutable_kernel_import": "MEASURED",
+    "performance": "NOT_CLAIMED",
+    "production_readiness": "NOT_CLAIMED"
+  },
+  "limitations": [
+    "The Hub kernel repository has no SZL_SOURCE_BINDING.json file.",
+    "Byte parity covers the three published Python package files only.",
+    "This local CPU import is not a throughput, energy, GPU, production, or provider-SLA qualification.",
+    "The model-type twin is not the Kernel Hub provider revision used by get_kernel."
+  ],
+  "observed_at": "2026-10-05T01:56:56.392809+00:00",
+  "package_parity": {
+    "__init__.py": {
+      "equal": true,
+      "github_sha256": "0cd0622d853d4ba65e4d87b6ca1821038772b40a280f0e838c69ddddb92923fc",
+      "kernel_hub_sha256": "0cd0622d853d4ba65e4d87b6ca1821038772b40a280f0e838c69ddddb92923fc"
+    },
+    "_chain.py": {
+      "equal": true,
+      "github_sha256": "011e291f2be6325cef372334e9dad73fb394fe54cd63177e8fcda8accf60f41d",
+      "kernel_hub_sha256": "011e291f2be6325cef372334e9dad73fb394fe54cd63177e8fcda8accf60f41d"
+    },
+    "attn.py": {
+      "equal": true,
+      "github_sha256": "bea5bb2f0d5b841295742c1569afd3d01c963700d5ecc01aa25f1db89e86dd35",
+      "kernel_hub_sha256": "bea5bb2f0d5b841295742c1569afd3d01c963700d5ecc01aa25f1db89e86dd35"
+    }
+  },
+  "provider": {
+    "kernel_repo": "kernels/SZLHOLDINGS/YARQA-ATTN",
+    "kernel_revision": "4e0828e517e84377d0024ab3f9d0cdab7d31520d",
+    "model_twin_revision": "d6aeb4f24655c07acc155eed7acade5ad249724f",
+    "source_binding_file": "UNAVAILABLE"
+  },
+  "runtime": {
+    "device": "cpu",
+    "kernels": "0.16.1",
+    "os": "Windows",
+    "paid_compute": false,
+    "python": "3.12.10",
+    "torch": "2.10.0+cu130"
+  },
+  "schema": "szl.yarqa-immutable-import-receipt/v1",
+  "secret_values_recorded": false,
+  "selfcheck": {
+    "chain_break": -1,
+    "chain_depth": 2,
+    "chain_ok": true,
+    "lambda": "Conjecture 1",
+    "max_abs_vs_compartment_ref": 4.76837158203125e-07,
+    "n_canals": 4,
+    "note": "CPU correctness vs naive within-compartment attn; no speedup claimed; GPU cubins not claimed; not import-LIVE",
+    "ok": true,
+    "path": "torch_compartment",
+    "python": "present",
+    "split": true,
+    "tamper_detected": true
+  },
+  "source": {
+    "repository": "szl-holdings/YARQA-ATTN",
+    "revision": "819b904f304a054cf78446aa43a5cb85e5149c4b"
+  },
+  "state": "MEASURED_IMPORT_PASS_BYTES_ALIGNED_SOURCE_BINDING_UNAVAILABLE"
+}
