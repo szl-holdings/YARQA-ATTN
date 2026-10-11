@@ -4,6 +4,19 @@ Canonical GitHub source for Hub `SZLHOLDINGS/YARQA-ATTN`.
 
 **Owner: KERNEL.** This is a kernel, not a Fall 2026 ATELIER weight, not a pointer at the Triton trio (`szl-receipt-attn`, `szl-maskmod`, `szl-block-kv`), and not an alias of receipt-attn. a11oy-net must not list it as a fourth Flash / Flex / paged stack. Those three stay separate.
 
+<!-- szl:header v1 -->
+<!-- Native identity: szl-brand@4309f6fce89179331b0b3ed8c99494e76c5be256; Orbit v2 icon. -->
+<p>
+  <a href="https://github.com/szl-holdings">
+    <img src="https://raw.githubusercontent.com/szl-holdings/szl-brand/4309f6fce89179331b0b3ed8c99494e76c5be256/kit/logos/orbit-v2/suite/szl-icon-32.svg" alt="SZL Holdings — Orbit v2" width="32" height="32" />
+  </a>
+</p>
+
+**Control before action. Evidence after.**
+
+[Product](https://a-11-oy.com) · [Proof](https://a11oy.net) · [GitHub organization](https://github.com/szl-holdings)
+<!-- /szl:header -->
+
 Quechua *yarqa* = irrigation canal that divides flow. Original SZL cut: **compartment / plug-flow attention**. Partition a sequence into canals (contiguous compartments), attend **within** a compartment, emit SHA3-256 receipts of the partition and of the attention output.
 
 Distinct silhouettes:
