@@ -15,6 +15,11 @@ summary: >-
   partition a sequence into canals (contiguous compartments), attend within each
   canal, and emit SHA3-256 receipts of the partition and of the attention output.
   Receipt-aware. Honesty-labeled. SOFTWARE/KERNEL: not a trained model, no weights.
+overview:
+  artifact_type: CPU compartment attention kernel
+  stage: Source ahead; source binding unavailable
+links:
+  evidence: https://github.com/szl-holdings/YARQA-ATTN/blob/2f15aded33e9d86407d8cec17abc7bfb1501bd0a/evidence/yarqa-postmerge-import-20261005.json
 front_matter:
   license: apache-2.0
   library_name: kernels

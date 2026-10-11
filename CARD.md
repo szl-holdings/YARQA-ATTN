@@ -21,9 +21,23 @@ szl:
 <!-- hf-card: type=kernel source=szl-holdings/YARQA-ATTN vars=hf/card.yaml -->
 <!-- Rendered by szl-holdings/.github hf-card/render.py. Edit hf/card.yaml in szl-holdings/YARQA-ATTN; do not edit this card on the Hub. -->
 
+<p><a href="https://huggingface.co/spaces/SZLHOLDINGS/szl-command-lab"><img src="https://raw.githubusercontent.com/szl-holdings/.github/main/profile/assets/szl/logos/szl_mark_holographic.svg" alt="SZL Holdings" width="112" /></a></p>
+
 # YARQA-ATTN
 
 KERNEL kernel card. Original SZL **compartment / plug-flow** attention cut: partition a sequence into canals (contiguous compartments), attend within each canal, and emit SHA3-256 receipts of the partition and of the attention output. Receipt-aware. Honesty-labeled. SOFTWARE/KERNEL: not a trained model, no weights.
+
+**Artifact:** CPU compartment attention kernel · **Stage:** Source ahead; source binding unavailable
+
+[Explore in Command Lab](https://huggingface.co/spaces/SZLHOLDINGS/szl-command-lab) · [Build](https://github.com/szl-holdings/YARQA-ATTN) · [Evidence](https://github.com/szl-holdings/YARQA-ATTN/blob/2f15aded33e9d86407d8cec17abc7bfb1501bd0a/evidence/yarqa-postmerge-import-20261005.json)
+
+## Before you use it
+
+- Kernel, not weights. Live CPU inference lab is `SZLHOLDINGS/szl-model-inference-lab` (Khipu GGUF only), not this repo.
+- Receipts prove integrity and declared origin only; they do not prove accuracy, readiness or performance.
+
+<details>
+<summary>Technical details and evidence</summary>
 
 ## Kernel
 
@@ -117,22 +131,19 @@ artifact, production readiness, or a floating `main` reference.
 Publication/import context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/hf/README.md).
 Historical Hub-only benchmark receipts remain REPORTED at their stated scope.
 
-## Claims
+## Evidence record
 
-| Label | Claim | Evidence |
-| --- | --- | --- |
-| MEASURED | Compartment correctness. `tests/test_yarqa_attn.py` asserts that fp32 output matches a naive within-compartment (block-diagonal) reference, and with one canal matches full SDPA, within atol=1e-5, rtol=1e-5; that more than one canal actually splits; that one canal's output does not depend on another canal's values; that earlier canals take the remainder; and that `selfcheck()` reports ok. CI runs it on every pull request and every push to main (`cpu-tests.yml`). | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_yarqa_attn.py) |
-| MEASURED | Receipts. `tests/test_receipt.py` asserts one receipt for the partition and one for the output, that tampering breaks the chain at the first row, and that the digests change with the values and with the canal count. | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_receipt.py) |
-| MEASURED | Immutable CPU `get_kernel` load from Kernel Hub revision `4e0828e517e84377d0024ab3f9d0cdab7d31520d` using `kernels==0.16.1` on 2026-10-05 UTC. `selfcheck()` passed. The three canonical Git object blobs at protected source `cc895b47e7a3d1e7d5f246812a573dfd1205b103` matched all six provider copies across the CPU and universal build variants. Neither Hub twin exposes `SZL_SOURCE_BINDING.json`, and both provider cards remain behind the source-owned card. Source binding is UNAVAILABLE and card projection is SOURCE_AHEAD. No performance, GPU, provider-SLA or production claim is made. | [receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/2f15aded33e9d86407d8cec17abc7bfb1501bd0a/evidence/yarqa-postmerge-import-20261005.json) |
-| UNAVAILABLE | GPU cubins. None shipped; the 2026-08-28 session had no CUDA device. v0 refuses CUDA tensors, and the refusal test is skipped where no GPU exists. | none linked |
-| NOT_CLAIMED | Throughput, tokens/s, joules, or performance versus FlashAttention. A speed claim needs a timed run on named hardware; none exists. | none linked |
+**MEASURED** — Compartment correctness. `tests/test_yarqa_attn.py` asserts that fp32 output matches a naive within-compartment (block-diagonal) reference, and with one canal matches full SDPA, within atol=1e-5, rtol=1e-5; that more than one canal actually splits; that one canal's output does not depend on another canal's values; that earlier canals take the remainder; and that `selfcheck()` reports ok. CI runs it on every pull request and every push to main (`cpu-tests.yml`). [Receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_yarqa_attn.py).
+
+**MEASURED** — Receipts. `tests/test_receipt.py` asserts one receipt for the partition and one for the output, that tampering breaks the chain at the first row, and that the digests change with the values and with the canal count. [Receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_receipt.py).
+
+**MEASURED** — Immutable CPU `get_kernel` load from Kernel Hub revision `4e0828e517e84377d0024ab3f9d0cdab7d31520d` using `kernels==0.16.1` on 2026-10-05 UTC. `selfcheck()` passed. The three canonical Git object blobs at protected source `cc895b47e7a3d1e7d5f246812a573dfd1205b103` matched all six provider copies across the CPU and universal build variants. Neither Hub twin exposes `SZL_SOURCE_BINDING.json`, and both provider cards remain behind the source-owned card. Source binding is UNAVAILABLE and card projection is SOURCE_AHEAD. No performance, GPU, provider-SLA or production claim is made. [Receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/2f15aded33e9d86407d8cec17abc7bfb1501bd0a/evidence/yarqa-postmerge-import-20261005.json).
+
+**UNAVAILABLE** — GPU cubins. None shipped; the 2026-08-28 session had no CUDA device. v0 refuses CUDA tensors, and the refusal test is skipped where no GPU exists. (no receipt linked).
+
+**NOT_CLAIMED** — Throughput, tokens/s, joules, or performance versus FlashAttention. A speed claim needs a timed run on named hardware; none exists. (no receipt linked).
 
 Labels follow the [SZL claim language](https://github.com/szl-holdings/.github/blob/main/docs/CLAIM_LANGUAGE.md). A claim is only as strong as the receipt it links.
-
-## Limits
-
-- Kernel, not weights. Live CPU inference lab is `SZLHOLDINGS/szl-model-inference-lab` (Khipu GGUF only), not this repo.
-- Receipts prove integrity and declared origin only; they do not prove accuracy, readiness or performance.
 
 ## Source and provenance
 
@@ -142,4 +153,6 @@ Labels follow the [SZL claim language](https://github.com/szl-holdings/.github/b
 | Proof | <https://github.com/szl-holdings/YARQA-ATTN> |
 | License | `apache-2.0` |
 
-This card is written to the Hub only by the committed mirror workflow of szl-holdings/YARQA-ATTN.
+Rendering this card does not establish Hub publication. Verify any Hub copy against its source revision, publication evidence, and exact Hub revision.
+
+</details>

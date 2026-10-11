@@ -35,7 +35,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 1
 
-      # hf-card as merged in szl-holdings/.github#801. Bump deliberately.
+      # Accepted shared card presentation and truthful publication footer.
 
       - name: Prove exact source checkout
         shell: bash
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: szl-holdings/.github
-          ref: 4579c55d8a9d03f6d5e24fd2ab17bcc947d4bcd3
+          ref: 3ef11ccd08c8350ff837c83735c802ff4d8323f9
           path: .hf-card-toolkit
           sparse-checkout: hf-card
           persist-credentials: false
