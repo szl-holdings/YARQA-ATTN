@@ -65,17 +65,24 @@ Doctrine v11 LOCKED. Λ = Conjecture 1 (advisory; uniqueness OPEN; never a theor
 
 ## Load
 
-Load only the immutable provider revision qualified by the receipt:
+The Kernel Hub repository is written only by this repository's
+[`hf-kernel-publish`](.github/workflows/hf-kernel-publish.yml) workflow. It publishes
+`torch-ext/yarqa_attn` to the `main` and `v1` branches and then verifies, anonymously in a
+fresh runner, that `get_kernel` serves exactly the GitHub source:
 
 ```python
+# pip install "kernels>=0.17.2" torch
 from kernels import get_kernel
 
-attn = get_kernel(
-    "SZLHOLDINGS/YARQA-ATTN",
-    revision="4e0828e517e84377d0024ab3f9d0cdab7d31520d",
-    trust_remote_code=True,
-)
+attn = get_kernel("SZLHOLDINGS/YARQA-ATTN", version=1, trust_remote_code=True)
 ```
+
+`version=1` follows the `v1` branch (stable API channel). To pin an exact build, resolve
+the `v1` branch to its Kernel Hub commit (`HfApi().list_repo_refs(..., repo_type="kernel")`)
+and pass it as `revision=`; `SZL_KERNEL_SOURCE.json` on the Hub names the GitHub commit it
+was built from. The 2026-10-05 measurement above is historical: it pinned the pre-pipeline
+Kernel Hub commit `4e0828e`. The model twin `SZLHOLDINGS/YARQA-ATTN` is a pointer only; it
+keeps `yarqa_attn.npz`, a small SYNTHETIC silhouette that the kernel never loads.
 
 Source tree (labeled; not a Hub load; not import-LIVE):
 

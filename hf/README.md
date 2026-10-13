@@ -1,4 +1,4 @@
-# Hugging Face card source: staged, not published
+# Hugging Face card source and kernel publication
 
 This folder is the GitHub source for the two Hub twins of this repository:
 
@@ -44,15 +44,36 @@ evidence. Its parity conclusion is retained, but its hash rows reflected Windows
 checkout line endings. The successor receipt records canonical Git object bytes and
 immutable provider bytes, preventing checkout-EOL contamination.
 
-## Publish status: blocked on owner actions
+## Publication: `hf-kernel-publish`
 
-**Nothing in this repository writes the Hub.** Both twins still serve the cards in `hub-import/`. Publishing `CARD.md` needs all of:
+[`.github/workflows/hf-kernel-publish.yml`](../.github/workflows/hf-kernel-publish.yml) with
+[`scripts/szl_kernel_publish.py`](../scripts/szl_kernel_publish.py) is the only writer of both
+twins. Its configuration is [`.github/hf-kernels.json`](../.github/hf-kernels.json).
 
-1. **An HF credential for this repository.** Preferred: Trusted Publishers for `SZLHOLDINGS/YARQA-ATTN` and `kernels/SZLHOLDINGS/YARQA-ATTN`, bound to this repository's mirror workflow on `main`. Fallback: a repository secret `HF_TOKEN` scoped to those two repos. This repository has no HF secret today. (Owner action.)
-2. **The shared mirror.** `reusable-hf-mirror.yml` (model and kernel targets) is not merged in `szl-holdings/.github`; workflow changes there wait for the owner's trust-root review. No copy-pasted mirror is added here in the meantime.
-3. **A kernel write path.** `huggingface_hub` 2.0.0 refuses commits to `repo_type="kernel"`; Git is the only proven transport.
+- **Kernel repo** (`kernels/SZLHOLDINGS/YARQA-ATTN`, what `get_kernel` loads): `build/torch-cpu`
+  and `build/torch-universal` (identical bytes, LF-normalised) from `torch-ext/yarqa_attn`, a
+  generated `metadata.json` with a sha256 digest per variant, `CARD.md` as `README.md` (after the
+  publisher's card lint), `LICENSE`, `NOTICE`, and `SZL_KERNEL_SOURCE.json` naming the GitHub
+  commit. The same tree is written to `main` and `v1` by fast-forward Git pushes over HTTPS
+  (`huggingface_hub` cannot commit to kernel repos). The stale Hub-only plates
+  `OPERATIONAL.json` (it pinned `revision="main"`) and `BENCH.laptop-blackwell.json` are pruned.
+- **Verification** runs anonymously in a fresh runner with `kernels==0.17.2` and CPU torch:
+  `get_kernel("SZLHOLDINGS/YARQA-ATTN", version=1, trust_remote_code=True)`, the allowlist form,
+  and `revision="main"` must load `build/<variant>/yarqa_attn` of the resolved commit, and every
+  served file must equal the GitHub source.
+- **Model twin** (`SZLHOLDINGS/YARQA-ATTN`), only after verification passes: `README.md` becomes
+  [`model-twin-pointer.md`](model-twin-pointer.md), and the stale source copies (`torch-ext/`,
+  `tests/`, `yarqa.py`, `example.py`, `build.toml`, `flake.nix`, `pyproject.toml`, `CARD.md`) and
+  plates are pruned. `yarqa_attn.npz` (SYNTHETIC), `TRAINING_RECEIPT.json`, `bom/`, `LICENSE` and
+  `og-card.png` are kept; the pointer card discloses the NPZ.
 
-When those exist, a thin caller of the shared mirror publishes `CARD.md` as `README.md` to both twins, ships `LICENSE` (the kernel repo has none on the Hub, and the model twin's `LICENSE` differs from this repository's), and keeps the Hub-only receipts listed in `hub-import/IMPORT.json`. Until then, nobody edits these cards on the Hub.
+Triggers: a published release publishes its tag; `workflow_dispatch` (default branch only;
+`dry_run` plans without writing) repairs or publishes a chosen ref; pull requests build and load
+both variants locally; a weekly job re-verifies what `get_kernel` serves against the latest release.
+The credential is the org secret `HF_TOKEN`, exposed only to the two writing steps.
+
+`hub-import/` and the 2026-10-05 witnesses below are historical: they describe the Hub before
+this pipeline existed.
 
 ## What the import shows
 
