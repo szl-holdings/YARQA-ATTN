@@ -1,0 +1,45 @@
+{
+  "schema": "szl.hf-kernels/v1",
+  "$comment": "Consumed by .github/workflows/hf-kernel-publish.yml via scripts/szl_kernel_publish.py. This repository is the single source of the Kernel Hub repo kernels/SZLHOLDINGS/YARQA-ATTN and of the pointer card on its model twin SZLHOLDINGS/YARQA-ATTN. Prune lists name Hub-only files observed on 2026-10-13 (see hf/hub-import/IMPORT.json): stale plates (OPERATIONAL.json pins revision=\"main\" and claims import-LIVE) and stale copies of this source tree on the model twin. The twin keeps its BOM, TRAINING_RECEIPT.json, og-card.png, LICENSE and the SYNTHETIC yarqa_attn.npz, which the pointer card discloses.",
+  "kernels": [
+    {
+      "repo_id": "SZLHOLDINGS/YARQA-ATTN",
+      "name": "yarqa-attn",
+      "version": 1,
+      "license": "Apache-2.0",
+      "source_repository": "szl-holdings/YARQA-ATTN",
+      "packages": [
+        { "src": "torch-ext/yarqa_attn", "name": "yarqa_attn" }
+      ],
+      "card": "CARD.md",
+      "license_file": "LICENSE",
+      "extra_files": {
+        "NOTICE": "NOTICE"
+      },
+      "prune_paths": [
+        "OPERATIONAL.json",
+        "BENCH.laptop-blackwell.json"
+      ],
+      "python_depends": [],
+      "smoke": "hf/kernel_smoke.py",
+      "model_twin": {
+        "repo_id": "SZLHOLDINGS/YARQA-ATTN",
+        "mode": "pointer",
+        "card": "hf/model-twin-pointer.md",
+        "prune_paths": [
+          "build/",
+          "torch-ext/",
+          "tests/",
+          "yarqa.py",
+          "example.py",
+          "build.toml",
+          "flake.nix",
+          "pyproject.toml",
+          "CARD.md",
+          "OPERATIONAL.json",
+          "BENCH.laptop-blackwell.json"
+        ]
+      }
+    }
+  ]
+}

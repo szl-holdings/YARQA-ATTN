@@ -25,9 +25,9 @@ szl:
 
 # YARQA-ATTN
 
-KERNEL kernel card. Original SZL **compartment / plug-flow** attention cut: partition a sequence into canals (contiguous compartments), attend within each canal, and emit SHA3-256 receipts of the partition and of the attention output. Receipt-aware. Honesty-labeled. SOFTWARE/KERNEL: not a trained model, no weights.
+KERNEL kernel card. Original SZL **compartment / plug-flow** attention cut: partition a sequence into canals (contiguous compartments), attend within each canal, and emit SHA3-256 receipts of the partition and of the attention output. Receipt-aware. Honesty-labeled. SOFTWARE/KERNEL: not a trained model; the kernel ships no weights.
 
-**Artifact:** CPU compartment attention kernel · **Stage:** Source ahead; source binding unavailable
+**Artifact:** CPU compartment attention kernel · **Stage:** Published from GitHub by hf-kernel-publish (v1 channel)
 
 [Explore in Command Lab](https://huggingface.co/spaces/SZLHOLDINGS/szl-command-lab) · [Build](https://github.com/szl-holdings/YARQA-ATTN) · [Evidence](https://github.com/szl-holdings/YARQA-ATTN/blob/2f15aded33e9d86407d8cec17abc7bfb1501bd0a/evidence/yarqa-postmerge-import-20261005.json)
 
@@ -48,22 +48,19 @@ KERNEL kernel card. Original SZL **compartment / plug-flow** attention cut: part
 | Backends | cpu (torch_compartment) |
 
 ```python
-import re
-
-# Set only after owner qualification of this first-class Kernel Hub release.
-KERNEL_REVISION = "REPLACE_WITH_OWNER_QUALIFIED_KERNEL_COMMIT"
-if re.fullmatch(r"[0-9a-f]{40}", KERNEL_REVISION) is None:
-    raise ValueError("An owner-qualified immutable Kernel Hub commit is required")
-
-# This loads and executes remote Python code; review the pinned source first.
+# pip install "kernels>=0.17.2" torch
+# This loads and executes remote Python code; review the source first.
 from kernels import get_kernel
 
-attn = get_kernel("SZLHOLDINGS/YARQA-ATTN", revision=KERNEL_REVISION, trust_remote_code=True)
+attn = get_kernel("SZLHOLDINGS/YARQA-ATTN", version=1, trust_remote_code=True)
 ```
 
 ## What it is not
 
-**Not a Fall 2026 ATELIER weight.** No tensors in this repo. Not an alias of
+**Not a Fall 2026 ATELIER weight.** No tensors in this kernel. The model twin
+`SZLHOLDINGS/YARQA-ATTN` keeps `yarqa_attn.npz`, a small SYNTHETIC attention-gate
+silhouette described by its `TRAINING_RECEIPT.json`; the kernel never loads it, and it
+carries no benchmark or capability claim. Not an alias of
 [`szl-receipt-attn`](https://github.com/szl-holdings/szl-receipt-attn). Not a pointer
 at the Triton trio (`szl-receipt-attn`, `szl-maskmod`, `szl-block-kv`); those three
 stay separate, and a11oy-net must not list this as a fourth Flash / Flex / paged stack.
@@ -113,23 +110,33 @@ actually splits.
 
 ## Source and Hub release scope
 
-Loading with `trust_remote_code=True` executes code from the selected first-class
-Kernel Hub repository. Review that immutable source and qualify a compatible
-`kernels` client before running it. Set `KERNEL_REVISION` to the owner-qualified
-Kernel Hub publication commit; this card does not establish one. A GitHub
-source commit or model-twin revision is not the provider revision. The syntax
-check in the example does not establish release qualification.
+GitHub `szl-holdings/YARQA-ATTN` is the only writer of the Kernel Hub repository.
+Its `hf-kernel-publish` workflow builds `build/torch-cpu` and `build/torch-universal`
+(identical bytes) from `torch-ext/yarqa_attn` at one GitHub commit, writes them to the
+`main` and `v1` branches, and then loads them anonymously with
+`get_kernel("SZLHOLDINGS/YARQA-ATTN", version=1, trust_remote_code=True)` in a fresh
+runner and compares the served files with the GitHub source. `SZL_KERNEL_SOURCE.json`
+in the Kernel Hub repository names the GitHub commit each build came from.
 
-A current bounded receipt measured an immutable CPU import from Kernel Hub commit
-`4e0828e517e84377d0024ab3f9d0cdab7d31520d` with `kernels==0.16.1`, a passing
-`selfcheck()`, and byte equality for all three published Python package files against
-GitHub source `819b904f304a054cf78446aa43a5cb85e5149c4b`. The Kernel Hub repository
-has no `SZL_SOURCE_BINDING.json`, so GitHub-to-Hub source binding remains UNAVAILABLE.
-The measurement does not qualify performance, GPU execution, the model-twin NPZ
-artifact, production readiness, or a floating `main` reference.
+`version=1` follows the `v1` branch, the stable API channel. Loading with
+`trust_remote_code=True` executes code from the Kernel Hub repository; the narrowest
+form is `trust_remote_code=["SZLHOLDINGS/YARQA-ATTN"]`. To pin an exact build, resolve
+the `v1` branch to its commit and pass that as `revision`:
 
-Publication/import context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/hf/README.md).
-Historical Hub-only benchmark receipts remain REPORTED at their stated scope.
+```python
+from huggingface_hub import HfApi
+from kernels import get_kernel
+
+refs = HfApi().list_repo_refs("SZLHOLDINGS/YARQA-ATTN", repo_type="kernel")
+pin = next(b.target_commit for b in refs.branches if b.name == "v1")
+attn = get_kernel("SZLHOLDINGS/YARQA-ATTN", revision=pin, trust_remote_code=["SZLHOLDINGS/YARQA-ATTN"])
+```
+
+A GitHub source commit or a model-twin revision is not a Kernel Hub revision. The
+model twin carries only a pointer to the Kernel Hub repository. Publication does not
+qualify performance, GPU execution, the model-twin NPZ artifact or production use.
+
+Publication context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/main/hf/README.md).
 
 ## Evidence record
 
