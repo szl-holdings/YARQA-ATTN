@@ -120,3 +120,5 @@ fp32 vs naive within-compartment SDPA (block-diagonal keep-mask): **atol=1e-5, r
 ## License
 
 Apache-2.0. Copyright 2026 SZL Holdings. Owner: Stephen P. Lutar Jr. / SZL Holdings. Homepage: https://a-11-oy.com
+
+Estate on Hugging Face: models, datasets and Spaces are published under the [SZLHOLDINGS](https://huggingface.co/SZLHOLDINGS) org.
