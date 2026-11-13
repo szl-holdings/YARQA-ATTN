@@ -141,6 +141,14 @@ qualify performance, GPU execution, the model-twin NPZ artifact or production us
 
 Publication context is recorded in [hf/README.md](https://github.com/szl-holdings/YARQA-ATTN/blob/main/hf/README.md).
 
+## Card completeness (2026-11-12)
+
+This section adds required card sections the card above did not have. It states only what files in this repository and the estate's own receipt datasets show; nothing here is a new result.
+
+### Benchmarks
+
+Not yet benchmarked. As of 2026-11-12 this repository has no benchmark results (latency, throughput or correctness-vs-reference timings). Published builds: `torch-cpu`, `torch-universal`. No GPU build is published, so no GPU performance claim is made.
+
 ## Evidence record
 
 **MEASURED** — Compartment correctness. `tests/test_yarqa_attn.py` asserts that fp32 output matches a naive within-compartment (block-diagonal) reference, and with one canal matches full SDPA, within atol=1e-5, rtol=1e-5; that more than one canal actually splits; that one canal's output does not depend on another canal's values; that earlier canals take the remainder; and that `selfcheck()` reports ok. CI runs it on every pull request and every push to main (`cpu-tests.yml`). [Receipt](https://github.com/szl-holdings/YARQA-ATTN/blob/724208adc51c664f48aded57ee3c0d2cefc18361/tests/test_yarqa_attn.py).
